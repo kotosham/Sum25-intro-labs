@@ -27,4 +27,61 @@ gpgsig -----BEGIN SSH SIGNATURE-----
  -----END SSH SIGNATURE-----  
 update text file  
   
-Commit - состояние репозитория в определенный момент. Содержит ссылку на tree, родительский commit, информацию об авторе и времени, содержимое коммита.
+Commit - состояние репозитория в определенный момент. Содержит ссылку на tree, родительский commit, информацию об авторе и времени, содержимое коммита.  
+
+### 4. Git reset, reflog
+```sh
+git log --oneline
+```
+  
+Output:  
+```sh
+299040f (HEAD -> git-reset-practice) Third commit  
+ec934e7 Second commit  
+8208350 First commit  
+```
+  
+```sh
+git reset --soft HEAD~1
+git status
+```
+  
+Output:  
+```sh
+On branch git-reset-practice  
+Changes to be committed:  
+  (use "git restore --staged <file>..." to unstage)  
+        modified:   file.txt  
+```
+  
+Third commit удален из истории. Изменения остались в индексе
+  
+```sh
+git reset --hard HEAD~1
+git reflog
+```
+  
+Output:  
+```sh
+8208350 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1  
+ec934e7 HEAD@{1}: reset: moving to HEAD~1  
+299040f HEAD@{2}: commit: Third commit  
+ec934e7 HEAD@{3}: commit: Second commit  
+8208350 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit  
+```
+  
+Third commit удален, состояние вернулось в Second commit. Теперь восстановим с помощью reflog  
+  
+```sh  
+git reset --hard HEAD@{2}  
+git log --oneline  
+```  
+  
+Output:  
+```sh
+299040f (HEAD -> git-reset-practice) Third commit  
+ec934e7 Second commit  
+8208350 First commit  
+```
+  
+Third commit успешно восстановлен.
