@@ -85,3 +85,29 @@ ec934e7 Second commit
 ```
   
 Third commit успешно восстановлен.
+  
+### 5. Визуализация истории коммитов
+```sh
+git log --oneline --graph --all  
+* 33d8aad (side-branch) Side branch commit  
+* 901ead3 (git-reset-practice) Commit C  
+* ae97416 Commit B  
+* 9f98d0d Commit A  
+* 67380ba (origin/git-reset-practice) update submission2.md (practice documentation)  
+* 299040f Third commit  
+* ec934e7 Second commit  
+* 8208350 First commit  
+* 048f84e (HEAD -> master, origin/master, origin/HEAD) add submission2.md  
+* 1dd61d6 update text file  
+* 8b71951 add text file  
+*   76acab2 (lab2) Merge pull request #1 from kotosham/lab1  
+|\  
+| * 739a42e (origin/lab1, lab1) add merge strategies comparison  
+| * 0ac2c74 add task1.md with commit signing explanation  
+| * 94e6038 add task1.md with commit signing explanation  
+|/  
+* 3dd1718 lab2 Git  
+* 0fea98c lab2 Git  
+* a107866 lab1 Intro  
+```
+Графическое представление истории коммитов позволяет наглядно видеть ветвление и слияние изменений, находить точку расхождения веток и анализировать историю изменений в сложных проектах.  
